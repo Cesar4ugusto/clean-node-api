@@ -1,5 +1,6 @@
+import { HttpRequest, HttpResponse } from "./../../protocols/http";
 export class LessonController {
-    handle(httpRequest: any): any {
+    handle(httpRequest: HttpRequest): HttpResponse {
         if (!httpRequest.body.description) {
             return {
                 statusCode: 400,
