@@ -1,19 +1,19 @@
 {
-  "name": "api-solid",
-  "version": "1.0.0",
-  "description": "Api usando os princípios solid e clean architecture",
-  "author": "Cesar Augusto Polidorio Machado <cesarapolidorio@gmail.com> (http://github.com/Cesar4ugusto)",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^17.0.31",
-    "@typescript-eslint/eslint-plugin": "^5.22.0",
-    "@typescript-eslint/parser": "^5.22.0",
-    "eslint": "^8.0.1",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "git-commit-msg-linter": "^4.1.2",
-    "typescript": "^4.6.4"
-  }
+    "name": "api-solid",
+    "version": "1.0.0",
+    "description": "Api usando os princípios solid e clean architecture",
+    "author": "Cesar Augusto Polidorio Machado <cesarapolidorio@gmail.com> (http://github.com/Cesar4ugusto)",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^17.0.31",
+        "@typescript-eslint/eslint-plugin": "^5.22.0",
+        "@typescript-eslint/parser": "^5.22.0",
+        "eslint": "^8.0.1",
+        "eslint-config-standard": "^17.0.0",
+        "eslint-plugin-import": "^2.25.2",
+        "eslint-plugin-n": "^15.0.0",
+        "eslint-plugin-promise": "^6.0.0",
+        "git-commit-msg-linter": "^4.1.2",
+        "typescript": "^4.6.4"
+    }
 }
