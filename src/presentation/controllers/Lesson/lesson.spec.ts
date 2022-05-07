@@ -1,3 +1,4 @@
+import { InvalidParamError } from "../../errors/invalid-param-error";
 import { MissingParamError } from "../../errors/missing-param-error";
 import { LessonController } from "./lesson";
 
@@ -45,5 +46,20 @@ describe("Lesson Controller", () => {
 
         expect(httpResponse.statusCode).toBe(400);
         expect(httpResponse.body).toEqual(new MissingParamError({ message: "description" }));
+    });
+
+    it("should return 404 if duration validator throws", () => {
+        const sut = makeSut();
+
+        const httpRequest = {
+            body: {
+                description: "any_description",
+                duration: -10,
+            },
+        };
+        const httpResponse = sut.handle(httpRequest);
+
+        expect(httpResponse.statusCode).toBe(404);
+        expect(httpResponse.body).toEqual(new InvalidParamError({ message: "duration" }));
     });
 });
