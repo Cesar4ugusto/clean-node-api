@@ -2,6 +2,7 @@ import { LessonModel } from "../../../domain/models/Lesson";
 import { AddLesson, AddLessonModel } from "../../../domain/useCases/add-lesson";
 import { InvalidParamError } from "../../errors/invalid-param-error";
 import { MissingParamError } from "../../errors/missing-param-error";
+import { ServerError } from "../../errors/server-error";
 import { LessonController } from "./lesson";
 
 const makeAddLesson = (): AddLesson => {
@@ -102,5 +103,24 @@ describe("Lesson Controller", () => {
         sut.handle(httpRequest);
 
         expect(addSpy).toHaveBeenCalledWith({ description: "valid_description", duration: 10 });
+    });
+
+    it("should returns 500 if AddLesson throws", () => {
+        const { sut, addLessonStub } = makeSut();
+
+        jest.spyOn(addLessonStub, "add").mockImplementationOnce(() => {
+            throw new Error();
+        });
+
+        const httpRequest = {
+            body: {
+                description: "valid_description",
+                duration: 10,
+            },
+        };
+        const httpResponse = sut.handle(httpRequest);
+
+        expect(httpResponse.statusCode).toBe(500);
+        expect(httpResponse.body).toEqual(new ServerError());
     });
 });
