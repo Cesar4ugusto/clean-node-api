@@ -1,14 +1,39 @@
+import { LessonModel } from "../../../domain/models/Lesson";
+import { AddLesson, AddLessonModel } from "../../../domain/useCases/add-lesson";
 import { InvalidParamError } from "../../errors/invalid-param-error";
 import { MissingParamError } from "../../errors/missing-param-error";
 import { LessonController } from "./lesson";
 
-const makeSut = (): LessonController => {
-    return new LessonController();
+const makeAddLesson = (): AddLesson => {
+    class AddLessonStub implements AddLesson {
+        add(lesson: AddLessonModel): LessonModel {
+            const fakeLesson = {
+                id: "valid_id",
+                description: "valid_description",
+                duration: 10,
+            };
+
+            return fakeLesson;
+        }
+    }
+
+    return new AddLessonStub();
+};
+
+interface SutTypes {
+    sut: LessonController;
+    addLessonStub: AddLesson;
+}
+
+const makeSut = (): SutTypes => {
+    const addLessonStub = makeAddLesson();
+    const sut = new LessonController(addLessonStub);
+    return { sut, addLessonStub };
 };
 
 describe("Lesson Controller", () => {
     it("should return 400 if no description is provider", () => {
-        const sut = makeSut();
+        const { sut } = makeSut();
 
         const httpRequest = {
             body: {
@@ -21,7 +46,7 @@ describe("Lesson Controller", () => {
     });
 
     it("should return an error if no duration is provided", () => {
-        const sut = makeSut();
+        const { sut } = makeSut();
 
         const httpRequest = {
             body: {
@@ -35,7 +60,7 @@ describe("Lesson Controller", () => {
     });
 
     it("should return an error if no description is provided", () => {
-        const sut = makeSut();
+        const { sut } = makeSut();
 
         const httpRequest = {
             body: {
@@ -49,7 +74,7 @@ describe("Lesson Controller", () => {
     });
 
     it("should return 404 if duration validator throws", () => {
-        const sut = makeSut();
+        const { sut } = makeSut();
 
         const httpRequest = {
             body: {
@@ -61,5 +86,21 @@ describe("Lesson Controller", () => {
 
         expect(httpResponse.statusCode).toBe(404);
         expect(httpResponse.body).toEqual(new InvalidParamError({ message: "duration" }));
+    });
+
+    it("should call AddLesson with correct values", () => {
+        const { sut, addLessonStub } = makeSut();
+
+        const addSpy = jest.spyOn(addLessonStub, "add");
+
+        const httpRequest = {
+            body: {
+                description: "valid_description",
+                duration: 10,
+            },
+        };
+        sut.handle(httpRequest);
+
+        expect(addSpy).toHaveBeenCalledWith({ description: "valid_description", duration: 10 });
     });
 });
