@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "description": "Api usando os princípios solid e clean architecture",
   "author": "Cesar Augusto Polidorio Machado <cesarapolidorio@gmail.com> (http://github.com/Cesar4ugusto)",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "git-commit-msg-linter": "^4.1.2"
+  }
 }
