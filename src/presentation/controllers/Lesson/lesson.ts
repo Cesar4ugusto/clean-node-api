@@ -1,9 +1,6 @@
-import { AddLesson } from "../../../domain/useCases/add-lesson";
-import { InvalidParamError } from "../../errors/invalid-param-error";
-import { MissingParamError } from "../../errors/missing-param-error";
+import { AddLesson, Controller, HttpRequest, HttpResponse } from "./lesson-protocols";
+import { InvalidParamError, MissingParamError } from "../../errors";
 import { badRequest, notFound, serverError } from "../../helpers/http-helper";
-import { Controller } from "../../protocols/controller";
-import { HttpRequest, HttpResponse } from "./../../protocols/http";
 
 export class LessonController implements Controller {
     constructor(private readonly addLesson: AddLesson) {

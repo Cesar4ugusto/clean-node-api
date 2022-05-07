@@ -1,8 +1,5 @@
-import { LessonModel } from "../../../domain/models/Lesson";
-import { AddLesson, AddLessonModel } from "../../../domain/useCases/add-lesson";
-import { InvalidParamError } from "../../errors/invalid-param-error";
-import { MissingParamError } from "../../errors/missing-param-error";
-import { ServerError } from "../../errors/server-error";
+import { AddLesson, AddLessonModel, LessonModel } from "./lesson-protocols";
+import { InvalidParamError, MissingParamError, ServerError } from "../../errors";
 import { LessonController } from "./lesson";
 
 const makeAddLesson = (): AddLesson => {
