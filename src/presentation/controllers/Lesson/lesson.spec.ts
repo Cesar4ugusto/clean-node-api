@@ -1,3 +1,4 @@
+import { MissingParamError } from "../../errors/missing-param-error";
 import { LessonController } from "./lesson";
 
 describe("Lesson Controller", () => {
@@ -25,7 +26,7 @@ describe("Lesson Controller", () => {
         const httpResponse = sut.handle(httpRequest);
 
         expect(httpResponse.statusCode).toBe(400);
-        expect(httpResponse.body).toEqual(new Error("Missing param: duration"));
+        expect(httpResponse.body).toEqual(new MissingParamError({ message: "duration" }));
     });
 
     it("should return an error if no description is provided", () => {
@@ -39,6 +40,6 @@ describe("Lesson Controller", () => {
         const httpResponse = sut.handle(httpRequest);
 
         expect(httpResponse.statusCode).toBe(400);
-        expect(httpResponse.body).toEqual(new Error("Missing param: description"));
+        expect(httpResponse.body).toEqual(new MissingParamError({ message: "description" }));
     });
 });
