@@ -1,10 +1,10 @@
 import { BaseErrorException, BaseErrorExceptionProps } from "./base-error-exception";
 
-export class MissingParamError extends BaseErrorException {
+export class InvalidParamError extends BaseErrorException {
     constructor(error: BaseErrorExceptionProps) {
         super({
-            code: "missing_param",
-            message: "Missing param:" + error.message,
+            code: "invalid_param",
+            message: "Invalid param:" + error.message,
         });
         this.name = "MissingParamError";
     }
