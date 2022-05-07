@@ -120,4 +120,23 @@ describe("Lesson Controller", () => {
         expect(httpResponse.statusCode).toBe(500);
         expect(httpResponse.body).toEqual(new ServerError());
     });
+
+    it("should returns 201 if valid data is provided", () => {
+        const { sut } = makeSut();
+
+        const httpRequest = {
+            body: {
+                description: "valid_description",
+                duration: 10,
+            },
+        };
+        const httpResponse = sut.handle(httpRequest);
+
+        expect(httpResponse.statusCode).toBe(201);
+        expect(httpResponse.body).toEqual({
+            id: "valid_id",
+            description: "valid_description",
+            duration: 10,
+        });
+    });
 });
