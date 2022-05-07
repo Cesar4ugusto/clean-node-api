@@ -23,7 +23,13 @@ export class LessonController implements Controller {
                 return notFound(new InvalidParamError({ message: "duration" }));
             }
 
-            this.addLesson.add({ description, duration });
+            const lesson = this.addLesson.add({ description, duration });
+
+            return {
+                statusCode: 201,
+                body: lesson,
+            };
+            return;
         } catch (err) {
             return serverError();
         }
