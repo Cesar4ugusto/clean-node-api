@@ -1,9 +1,13 @@
 import { MissingParamError } from "../../errors/missing-param-error";
 import { LessonController } from "./lesson";
 
+const makeSut = (): LessonController => {
+    return new LessonController();
+};
+
 describe("Lesson Controller", () => {
     it("should return 400 if no description is provider", () => {
-        const sut = new LessonController();
+        const sut = makeSut();
 
         const httpRequest = {
             body: {
@@ -16,7 +20,7 @@ describe("Lesson Controller", () => {
     });
 
     it("should return an error if no duration is provided", () => {
-        const sut = new LessonController();
+        const sut = makeSut();
 
         const httpRequest = {
             body: {
@@ -30,7 +34,7 @@ describe("Lesson Controller", () => {
     });
 
     it("should return an error if no description is provided", () => {
-        const sut = new LessonController();
+        const sut = makeSut();
 
         const httpRequest = {
             body: {
