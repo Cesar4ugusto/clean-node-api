@@ -25,6 +25,20 @@ describe("Lesson Controller", () => {
         const httpResponse = sut.handle(httpRequest);
 
         expect(httpResponse.statusCode).toBe(400);
-        expect(httpResponse.body).toEqual(new Error("Missing duration on request body"));
+        expect(httpResponse.body).toEqual(new Error("Missing param: duration"));
+    });
+
+    it("should return an error if no description is provided", () => {
+        const sut = new LessonController();
+
+        const httpRequest = {
+            body: {
+                duration: 30,
+            },
+        };
+        const httpResponse = sut.handle(httpRequest);
+
+        expect(httpResponse.statusCode).toBe(400);
+        expect(httpResponse.body).toEqual(new Error("Missing param: description"));
     });
 });
