@@ -5,7 +5,13 @@
     "author": "Cesar Augusto Polidorio Machado <cesarapolidorio@gmail.com> (http://github.com/Cesar4ugusto)",
     "license": "ISC",
     "scripts": {
-        "test": "jest"
+        "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+        "test:staged": "yarn test --findRelatedTests",
+        "test:ci": "yarn test --coverage",
+        "test:verbose": "jest --passWithNoTests --runInBand",
+        "test:unit": "yarn test --watch -c jest-unit-config.js",
+        "test:integration": "yarn test --watch -c jest-integration-config.js",
+        "test:clear": "jest --clearCache"
     },
     "devDependencies": {
         "@types/jest": "^27.5.0",
