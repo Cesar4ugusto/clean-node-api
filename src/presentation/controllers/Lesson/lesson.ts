@@ -1,6 +1,6 @@
 import { AddLesson, Controller, HttpRequest, HttpResponse } from "./lesson-protocols";
 import { InvalidParamError, MissingParamError } from "../../errors";
-import { badRequest, notFound, serverError } from "../../helpers/http-helper";
+import { badRequest, notFound, serverError, created } from "../../helpers/http-helper";
 
 export class LessonController implements Controller {
     constructor(private readonly addLesson: AddLesson) {
@@ -25,10 +25,7 @@ export class LessonController implements Controller {
 
             const lesson = this.addLesson.add({ description, duration });
 
-            return {
-                statusCode: 201,
-                body: lesson,
-            };
+            return created(lesson);
             return;
         } catch (err) {
             return serverError();
