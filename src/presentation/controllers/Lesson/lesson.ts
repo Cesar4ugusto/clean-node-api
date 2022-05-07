@@ -3,12 +3,12 @@ import { badRequest } from "../../helpers/http-helper";
 import { HttpRequest, HttpResponse } from "./../../protocols/http";
 export class LessonController {
     handle(httpRequest: HttpRequest): HttpResponse {
-        if (!httpRequest.body.description) {
-            return badRequest(new MissingParamError({ message: "description" }));
-        }
+        const requiredFields = ["duration", "description"];
 
-        if (!httpRequest.body.duration) {
-            return badRequest(new MissingParamError({ message: "duration" }));
+        for (const field of requiredFields) {
+            if (!httpRequest.body[field]) {
+                return badRequest(new MissingParamError({ message: field }));
+            }
         }
     }
 }
