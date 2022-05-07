@@ -1,0 +1,7 @@
+{
+  "name": "api-solid",
+  "version": "1.0.0",
+  "description": "Api usando os princípios solid e clean architecture",
+  "author": "Cesar Augusto Polidorio Machado <cesarapolidorio@gmail.com> (http://github.com/Cesar4ugusto)",
+  "license": "ISC"
+}
