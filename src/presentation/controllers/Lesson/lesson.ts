@@ -7,7 +7,7 @@ export class LessonController implements Controller {
         this.addLesson = addLesson;
     }
 
-    handle(httpRequest: HttpRequest): HttpResponse {
+    async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
         try {
             const requiredFields = ["duration", "description"];
 
@@ -23,7 +23,7 @@ export class LessonController implements Controller {
                 return notFound(new InvalidParamError({ message: "duration" }));
             }
 
-            const lesson = this.addLesson.add({ description, duration });
+            const lesson = await this.addLesson.add({ description, duration });
 
             return created(lesson);
             return;

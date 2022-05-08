@@ -6,5 +6,5 @@ export interface AddLessonModel {
 }
 
 export interface AddLesson {
-    add(lesson: AddLessonModel): LessonModel;
+    add(lesson: AddLessonModel): Promise<LessonModel>;
 }

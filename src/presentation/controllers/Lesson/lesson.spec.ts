@@ -4,7 +4,7 @@ import { LessonController } from "./lesson";
 
 const makeAddLesson = (): AddLesson => {
     class AddLessonStub implements AddLesson {
-        add(lesson: AddLessonModel): LessonModel {
+        async add(lesson: AddLessonModel): Promise<LessonModel> {
             const fakeLesson = {
                 id: "valid_id",
                 description: "valid_description",
@@ -30,7 +30,7 @@ const makeSut = (): SutTypes => {
 };
 
 describe("Lesson Controller", () => {
-    it("should return 400 if no description is provider", () => {
+    it("should return 400 if no description is provider", async () => {
         const { sut } = makeSut();
 
         const httpRequest = {
@@ -38,12 +38,12 @@ describe("Lesson Controller", () => {
                 duration: 30,
             },
         };
-        const httpResponse = sut.handle(httpRequest);
+        const httpResponse = await sut.handle(httpRequest);
 
         expect(httpResponse.statusCode).toBe(400);
     });
 
-    it("should return an error if no duration is provided", () => {
+    it("should return an error if no duration is provided", async () => {
         const { sut } = makeSut();
 
         const httpRequest = {
@@ -51,13 +51,13 @@ describe("Lesson Controller", () => {
                 description: "any_description",
             },
         };
-        const httpResponse = sut.handle(httpRequest);
+        const httpResponse = await sut.handle(httpRequest);
 
         expect(httpResponse.statusCode).toBe(400);
         expect(httpResponse.body).toEqual(new MissingParamError({ message: "duration" }));
     });
 
-    it("should return an error if no description is provided", () => {
+    it("should return an error if no description is provided", async () => {
         const { sut } = makeSut();
 
         const httpRequest = {
@@ -65,13 +65,13 @@ describe("Lesson Controller", () => {
                 duration: 30,
             },
         };
-        const httpResponse = sut.handle(httpRequest);
+        const httpResponse = await sut.handle(httpRequest);
 
         expect(httpResponse.statusCode).toBe(400);
         expect(httpResponse.body).toEqual(new MissingParamError({ message: "description" }));
     });
 
-    it("should return 404 if duration validator throws", () => {
+    it("should return 404 if duration validator throws", async () => {
         const { sut } = makeSut();
 
         const httpRequest = {
@@ -80,13 +80,13 @@ describe("Lesson Controller", () => {
                 duration: -10,
             },
         };
-        const httpResponse = sut.handle(httpRequest);
+        const httpResponse = await sut.handle(httpRequest);
 
         expect(httpResponse.statusCode).toBe(404);
         expect(httpResponse.body).toEqual(new InvalidParamError({ message: "duration" }));
     });
 
-    it("should call AddLesson with correct values", () => {
+    it("should call AddLesson with correct values", async () => {
         const { sut, addLessonStub } = makeSut();
 
         const addSpy = jest.spyOn(addLessonStub, "add");
@@ -97,16 +97,16 @@ describe("Lesson Controller", () => {
                 duration: 10,
             },
         };
-        sut.handle(httpRequest);
+        await sut.handle(httpRequest);
 
         expect(addSpy).toHaveBeenCalledWith({ description: "valid_description", duration: 10 });
     });
 
-    it("should returns 500 if AddLesson throws", () => {
+    it("should returns 500 if AddLesson throws", async () => {
         const { sut, addLessonStub } = makeSut();
 
         jest.spyOn(addLessonStub, "add").mockImplementationOnce(() => {
-            throw new Error();
+            throw Promise.resolve(new Error());
         });
 
         const httpRequest = {
@@ -115,13 +115,13 @@ describe("Lesson Controller", () => {
                 duration: 10,
             },
         };
-        const httpResponse = sut.handle(httpRequest);
+        const httpResponse = await sut.handle(httpRequest);
 
         expect(httpResponse.statusCode).toBe(500);
         expect(httpResponse.body).toEqual(new ServerError());
     });
 
-    it("should returns 201 if valid data is provided", () => {
+    it("should returns 201 if valid data is provided", async () => {
         const { sut } = makeSut();
 
         const httpRequest = {
@@ -130,7 +130,7 @@ describe("Lesson Controller", () => {
                 duration: 10,
             },
         };
-        const httpResponse = sut.handle(httpRequest);
+        const httpResponse = await sut.handle(httpRequest);
 
         expect(httpResponse.statusCode).toBe(201);
         expect(httpResponse.body).toEqual({
