@@ -19,6 +19,7 @@
     "rules": {
         "complexity": ["error", { "max": 15 }],
         "prettier/prettier": "error",
-        "@typescript-eslint/no-unused-vars": 0
+        "@typescript-eslint/no-unused-vars": 0,
+        "@typescript-eslint/no-namespace": 0
     }
 }

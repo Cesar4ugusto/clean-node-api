@@ -1,16 +1,16 @@
 import { DbAddLesson } from "./db-add-lesson";
-import { AddLessonModel, AddLessonRepository, LessonModel } from "./db-add-lesson-protocols";
+import { AddLesson, AddLessonRepository, LessonModel } from "./db-add-lesson-protocols";
 
 const makeAddLessonRepository = (): AddLessonRepository => {
     class AddLessonRepositoryStub implements AddLessonRepository {
-        async add(lessonData: AddLessonModel): Promise<LessonModel> {
+        async add(lessonData: AddLesson.Params): Promise<AddLesson.Result> {
             const fakeLesson = {
                 id: "valid_id",
                 description: "valid_description",
                 duration: 10,
             };
 
-            return Promise.resolve(fakeLesson);
+            return Promise.resolve(fakeLesson) !== null;
         }
     }
 
@@ -73,6 +73,6 @@ describe("DbLesson UseCase", () => {
 
         const lesson = await sut.add(lessonData);
 
-        expect(lesson).toEqual({ id: "valid_id", description: "valid_description", duration: 10 });
+        expect(lesson).toBeTruthy();
     });
 });

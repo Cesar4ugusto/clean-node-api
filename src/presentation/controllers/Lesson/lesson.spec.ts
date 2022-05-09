@@ -1,17 +1,17 @@
-import { AddLesson, AddLessonModel, LessonModel } from "./lesson-protocols";
+import { AddLesson } from "./lesson-protocols";
 import { InvalidParamError, MissingParamError, ServerError } from "../../errors";
 import { LessonController } from "./lesson";
 
 const makeAddLesson = (): AddLesson => {
     class AddLessonStub implements AddLesson {
-        async add(lesson: AddLessonModel): Promise<LessonModel> {
+        async add(lesson: AddLesson.Params): Promise<AddLesson.Result> {
             const fakeLesson = {
                 id: "valid_id",
                 description: "valid_description",
                 duration: 10,
             };
 
-            return fakeLesson;
+            return fakeLesson !== null;
         }
     }
 
@@ -133,10 +133,6 @@ describe("Lesson Controller", () => {
         const httpResponse = await sut.handle(httpRequest);
 
         expect(httpResponse.statusCode).toBe(201);
-        expect(httpResponse.body).toEqual({
-            id: "valid_id",
-            description: "valid_description",
-            duration: 10,
-        });
+        expect(httpResponse.body).toBeTruthy();
     });
 });

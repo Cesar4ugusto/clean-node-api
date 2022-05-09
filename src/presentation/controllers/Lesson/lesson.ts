@@ -26,7 +26,6 @@ export class LessonController implements Controller {
             const lesson = await this.addLesson.add({ description, duration });
 
             return created(lesson);
-            return;
         } catch (err) {
             return serverError();
         }
