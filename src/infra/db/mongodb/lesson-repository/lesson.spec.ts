@@ -14,6 +14,11 @@ describe("Lesson Mongo Repository", () => {
         await MongoHelper.disconnect();
     });
 
+    beforeEach(async () => {
+        const collection = MongoHelper.getCollection("lessons");
+        await collection.deleteMany({});
+    });
+
     it("should return an lesson on success", async () => {
         const sut = makeSut();
 

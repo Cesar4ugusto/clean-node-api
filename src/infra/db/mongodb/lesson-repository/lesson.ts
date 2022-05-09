@@ -5,7 +5,7 @@ import { MongoHelper } from "../helpers/mongo-helper";
 
 export class LessonMongoRepository implements AddLessonRepository {
     async add(lessonData: AddLesson.Params): Promise<AddLesson.Result> {
-        const LessonCollection = MongoHelper.getCollection("lesson");
+        const LessonCollection = MongoHelper.getCollection("lessons");
         const lesson = await LessonCollection.insertOne(lessonData);
         return lesson !== null;
     }
