@@ -47,4 +47,19 @@ describe("DbLesson UseCase", () => {
             duration: 10,
         });
     });
+
+    it("should throw if AddLessonRepository throws", async () => {
+        const { sut, addLessonRepositoryStub } = makeSut();
+
+        jest.spyOn(addLessonRepositoryStub, "add").mockReturnValueOnce(Promise.reject(new Error()));
+
+        const lessonData = {
+            description: "valid_description",
+            duration: 10,
+        };
+
+        const promise = sut.add(lessonData);
+
+        expect(promise).rejects.toThrow();
+    });
 });
