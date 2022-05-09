@@ -6,7 +6,7 @@ export class DbAddLesson implements AddLessonRepository {
     }
 
     async add(lessonData: AddLessonModel): Promise<LessonModel> {
-        await this.addLessonRepository.add(lessonData);
-        return Promise.resolve(null);
+        const lesson = await this.addLessonRepository.add(lessonData);
+        return lesson;
     }
 }
