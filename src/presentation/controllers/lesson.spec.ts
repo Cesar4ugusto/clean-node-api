@@ -1,5 +1,5 @@
 import { AddLesson } from "./lesson-protocols";
-import { InvalidParamError, MissingParamError, ServerError } from "../../errors";
+import { InvalidParamError, MissingParamError, ServerError } from "../errors";
 import { LessonController } from "./lesson";
 
 const makeAddLesson = (): AddLesson => {

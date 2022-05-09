@@ -1,7 +1,7 @@
-import { AddLessonRepository } from "../../../../data/protocols/add-lesson-repository";
-import { LessonModel } from "../../../../domain/models/Lesson";
-import { AddLesson } from "../../../../domain/useCases/add-lesson";
-import { MongoHelper } from "../helpers/mongo-helper";
+import { AddLessonRepository } from "../../../data/protocols/add-lesson-repository";
+import { LessonModel } from "../../../domain/models/Lesson";
+import { AddLesson } from "../../../domain/useCases/add-lesson";
+import { MongoHelper } from "./mongo-helper";
 
 export class LessonMongoRepository implements AddLessonRepository {
     async add(lessonData: AddLesson.Params): Promise<AddLesson.Result> {
