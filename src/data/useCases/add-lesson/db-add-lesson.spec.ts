@@ -62,4 +62,17 @@ describe("DbLesson UseCase", () => {
 
         expect(promise).rejects.toThrow();
     });
+
+    it("should return an lesson on success", async () => {
+        const { sut } = makeSut();
+
+        const lessonData = {
+            description: "valid_description",
+            duration: 10,
+        };
+
+        const lesson = await sut.add(lessonData);
+
+        expect(lesson).toEqual({ id: "valid_id", description: "valid_description", duration: 10 });
+    });
 });
