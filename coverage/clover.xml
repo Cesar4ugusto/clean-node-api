@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1652198180535" clover="3.2.0">
+  <project timestamp="1652198180535" name="All files">
+    <metrics statements="54" coveredstatements="52" conditionals="4" coveredconditionals="3" methods="17" coveredmethods="16" elements="75" coveredelements="71" complexity="0" loc="54" ncloc="54" packages="5" files="9" classes="9"/>
+    <package name="data.useCases">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="db-add-lesson.ts" path="E:\PROJECTS\wongames\src\data\useCases\db-add-lesson.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="infra.db.mongodb">
+      <metrics statements="14" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
+      <file name="lesson-mongo-repository.ts" path="E:\PROJECTS\wongames\src\infra\db\mongodb\lesson-mongo-repository.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+      <file name="mongo-helper.ts" path="E:\PROJECTS\wongames\src\infra\db\mongodb\mongo-helper.ts">
+        <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="presentation.controllers">
+      <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="lesson.ts" path="E:\PROJECTS\wongames\src\presentation\controllers\lesson.ts">
+        <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="7" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="16" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="23" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="presentation.errors">
+      <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="4"/>
+      <file name="base-error-exception.ts" path="E:\PROJECTS\wongames\src\presentation\errors\base-error-exception.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="7" type="cond" truecount="1" falsecount="1"/>
+      </file>
+      <file name="invalid-param-error.ts" path="E:\PROJECTS\wongames\src\presentation\errors\invalid-param-error.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+      </file>
+      <file name="missing-param-error.ts" path="E:\PROJECTS\wongames\src\presentation\errors\missing-param-error.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+      </file>
+      <file name="server-error.ts" path="E:\PROJECTS\wongames\src\presentation\errors\server-error.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="presentation.helpers">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="http-helper.ts" path="E:\PROJECTS\wongames\src\presentation\helpers\http-helper.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
