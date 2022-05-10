@@ -1,6 +1,5 @@
-import { AddLessonRepository } from "../../../data/protocols/add-lesson-repository";
-import { LessonModel } from "../../../domain/models/Lesson";
-import { AddLesson } from "../../../domain/useCases/add-lesson";
+import { AddLessonRepository } from "@/data/protocols";
+import { AddLesson } from "@/domain/useCases";
 import { MongoHelper } from "./mongo-helper";
 
 export class LessonMongoRepository implements AddLessonRepository {

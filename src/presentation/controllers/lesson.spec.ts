@@ -1,4 +1,4 @@
-import { AddLesson } from "./lesson-protocols";
+import { AddLesson } from "@/domain/useCases";
 import { InvalidParamError, MissingParamError, ServerError } from "../errors";
 import { LessonController } from "./lesson";
 

@@ -1,6 +1,7 @@
-import { AddLesson, Controller, HttpRequest, HttpResponse } from "./lesson-protocols";
+import { Controller, HttpRequest, HttpResponse } from "../protocols";
 import { InvalidParamError, MissingParamError } from "../errors";
-import { badRequest, notFound, serverError, created } from "../helpers/http-helper";
+import { badRequest, notFound, serverError, created } from "../helpers";
+import { AddLesson } from "@/domain/useCases";
 
 export class LessonController implements Controller {
     constructor(private readonly addLesson: AddLesson) {

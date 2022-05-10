@@ -1,5 +1,3 @@
-import { LessonModel } from "./../models/Lesson";
-
 export interface AddLesson {
     add(lesson: AddLesson.Params): Promise<AddLesson.Result>;
 }

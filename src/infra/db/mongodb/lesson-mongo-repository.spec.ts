@@ -1,5 +1,5 @@
 import { MongoHelper } from "./mongo-helper";
-import { LessonMongoRepository } from "./lesson";
+import { LessonMongoRepository } from "./lesson-mongo-repository";
 
 const makeSut = (): LessonMongoRepository => {
     return new LessonMongoRepository();

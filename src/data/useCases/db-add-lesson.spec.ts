@@ -1,5 +1,6 @@
 import { DbAddLesson } from "./db-add-lesson";
-import { AddLesson, AddLessonRepository, LessonModel } from "./db-add-lesson-protocols";
+import { AddLessonRepository } from "../protocols";
+import { AddLesson } from "@/domain/useCases";
 
 const makeAddLessonRepository = (): AddLessonRepository => {
     class AddLessonRepositoryStub implements AddLessonRepository {

@@ -1,5 +1,5 @@
-import { AddLesson, AddLessonRepository, LessonModel } from "./db-add-lesson-protocols";
-
+import { AddLesson } from "@/domain/useCases";
+import { AddLessonRepository } from "../protocols";
 export class DbAddLesson implements AddLessonRepository {
     constructor(private readonly addLessonRepository: AddLessonRepository) {
         this.addLessonRepository = addLessonRepository;
