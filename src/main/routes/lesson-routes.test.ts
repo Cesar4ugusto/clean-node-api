@@ -17,6 +17,6 @@ describe("Lesson Routes", () => {
     });
 
     it("should return an lesson on success", async () => {
-        await request(app).post("/api/lesson").send({ description: "test", duration: 10 }).expect(200);
+        await request(app).post("/api/lesson").send({ description: "test", duration: 10 }).expect(201);
     });
 });
