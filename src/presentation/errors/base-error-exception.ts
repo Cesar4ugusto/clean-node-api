@@ -1,7 +1,7 @@
-export interface BaseErrorExceptionProps {
+export type BaseErrorExceptionProps = {
     code?: string;
     message: string;
-}
+};
 
 export abstract class BaseErrorException extends Error {
     protected constructor(error: BaseErrorExceptionProps) {

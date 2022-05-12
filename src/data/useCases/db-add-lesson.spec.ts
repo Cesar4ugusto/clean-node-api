@@ -18,10 +18,10 @@ const makeAddLessonRepository = (): AddLessonRepository => {
     return new AddLessonRepositoryStub();
 };
 
-interface SutTypes {
+type SutTypes = {
     sut: DbAddLesson;
     addLessonRepositoryStub: AddLessonRepository;
-}
+};
 
 const makeSut = (): SutTypes => {
     const addLessonRepositoryStub = makeAddLessonRepository();

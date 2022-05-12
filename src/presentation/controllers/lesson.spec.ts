@@ -18,10 +18,10 @@ const makeAddLesson = (): AddLesson => {
     return new AddLessonStub();
 };
 
-interface SutTypes {
+type SutTypes = {
     sut: LessonController;
     addLessonStub: AddLesson;
-}
+};
 
 const makeSut = (): SutTypes => {
     const addLessonStub = makeAddLesson();

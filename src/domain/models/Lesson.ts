@@ -1,5 +1,5 @@
-export interface LessonModel {
+export type LessonModel = {
     id: string;
     description: string;
     duration: number;
-}
+};
